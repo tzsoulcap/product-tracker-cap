@@ -68,6 +68,11 @@ const InventoryPage = () => {
     navigate(`/inventory/update/${inventoryItem.id}`);
   };
 
+  // Define a search function to search by product name
+  const searchByProductName = (row: Inventory): string => {
+    return row.product?.name || "";
+  };
+
   return (
     <div className="space-y-6 animate-enter">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between">
@@ -90,7 +95,7 @@ const InventoryPage = () => {
         data={inventory}
         columns={columns}
         onRowClick={handleUpdateStock}
-        searchField={(row: Inventory) => row.product?.name || ""}
+        searchField={searchByProductName}
         emptyMessage="No inventory data found. Add products to get started."
       />
     </div>

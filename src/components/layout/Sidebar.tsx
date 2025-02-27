@@ -84,7 +84,8 @@ const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
                       }
                       end={item.path === "/"}
                     >
-                      <item.icon className="mr-3 h-5 w-5" />
+                      {/* Use a function to render the icon component */}
+                      {React.createElement(item.icon, { className: "mr-3 h-5 w-5" })}
                       <span>{item.title}</span>
                     </NavLink>
                   </li>

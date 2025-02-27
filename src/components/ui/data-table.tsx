@@ -15,7 +15,7 @@ interface DataTableProps<T> {
   data: T[];
   columns: DataTableColumn<T>[];
   onRowClick?: (row: T) => void;
-  searchField?: keyof T;
+  searchField?: keyof T | string | ((row: T) => string);
   emptyMessage?: string;
 }
 
@@ -45,12 +45,22 @@ function DataTable<T>({
     // Apply search filter if searchField is provided
     if (searchField && searchTerm) {
       filtered = filtered.filter((row) => {
-        const value = row[searchField];
-        if (typeof value === "string") {
+        // If searchField is a function, use it to get the searchable value
+        if (typeof searchField === "function") {
+          const value = searchField(row);
           return value.toLowerCase().includes(searchTerm.toLowerCase());
-        } else if (typeof value === "number") {
-          return value.toString().includes(searchTerm);
         }
+        
+        // If searchField is a simple property of T
+        if (typeof searchField === "string" && searchField in row) {
+          const value = row[searchField as keyof T];
+          if (typeof value === "string") {
+            return value.toLowerCase().includes(searchTerm.toLowerCase());
+          } else if (typeof value === "number") {
+            return value.toString().includes(searchTerm);
+          }
+        }
+        
         return false;
       });
     }
