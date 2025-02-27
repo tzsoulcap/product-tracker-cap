@@ -10,8 +10,10 @@ import Sidebar from "./components/layout/Sidebar";
 import Index from "./pages/Index";
 import Products from "./pages/products/Products";
 import AddProduct from "./pages/products/AddProduct";
+import AddProductWithExcel from "./pages/products/AddProductWithExcel";
 import Categories from "./pages/categories/Categories";
 import AddCategory from "./pages/categories/AddCategory";
+import AddCategoryWithExcel from "./pages/categories/AddCategoryWithExcel";
 import Suppliers from "./pages/suppliers/Suppliers";
 import AddSupplier from "./pages/suppliers/AddSupplier";
 import Inventory from "./pages/inventory/Inventory";
@@ -42,8 +44,10 @@ const App = () => {
                   <Route path="/" element={<Index />} />
                   <Route path="/products" element={<Products />} />
                   <Route path="/products/add" element={<AddProduct />} />
+                  <Route path="/products/add-excel" element={<AddProductWithExcel />} />
                   <Route path="/categories" element={<Categories />} />
                   <Route path="/categories/add" element={<AddCategory />} />
+                  <Route path="/categories/add-excel" element={<AddCategoryWithExcel />} />
                   <Route path="/suppliers" element={<Suppliers />} />
                   <Route path="/suppliers/add" element={<AddSupplier />} />
                   <Route path="/inventory" element={<Inventory />} />
