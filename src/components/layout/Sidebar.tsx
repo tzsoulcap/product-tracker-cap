@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { 
   Package, 
@@ -84,8 +84,7 @@ const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
                       }
                       end={item.path === "/"}
                     >
-                      {/* Use a function to render the icon component */}
-                      {React.createElement(item.icon, { className: "mr-3 h-5 w-5" })}
+                      <item.icon className="mr-3 h-5 w-5" />
                       <span>{item.title}</span>
                     </NavLink>
                   </li>

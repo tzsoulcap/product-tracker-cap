@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-interface DataTableProps<T> {
+interface DataTableProps<T extends object> {
   data: T[];
   columns: DataTableColumn<T>[];
   onRowClick?: (row: T) => void;
@@ -19,7 +19,7 @@ interface DataTableProps<T> {
   emptyMessage?: string;
 }
 
-function DataTable<T>({
+function DataTable<T extends object>({
   data,
   columns,
   onRowClick,
